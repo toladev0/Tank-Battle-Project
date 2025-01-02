@@ -1,7 +1,7 @@
-# Tank Battle 2D Game  
+# Tank Battle Game  
 
 ## 🎮 Overview  
-**Tank Battle 2D** is a local multiplayer tank shooting game built with Unity. Players take control of their tanks in a 2D environment, maneuvering and firing to destroy their opponent.  
+**Tank Battle** is a local multiplayer tank shooting game built with Unity. Players take control of their tanks in a 2D environment, maneuvering and firing to destroy their opponent.  
 
 The game is simple yet competitive, making it fun for friends to play together on the same machine.  
 
