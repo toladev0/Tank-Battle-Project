@@ -59,8 +59,8 @@ To run the game locally, follow these steps:
 
 ## 🚀 How to Play
 - Start the game and select a battle arena.
-- Player 1 uses WASD + Space to move and fire.
-- Player 2 uses the Arrow Keys + Shift to move and fire.
+- Player 1 uses `WASD` + `Space` to move and fire.
+- Player 2 uses the `Arrow Keys` + `Shift` to move and fire.
 - Destroy the opponent’s tank to win!
 
 ---
