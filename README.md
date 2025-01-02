@@ -67,7 +67,7 @@ To run the game locally, follow these steps:
 
 ## 📸 Screenshots
 ### Start Game
-![Start Game Screenshot](https://user-images.githubusercontent.com/your-username/image-id1.png)
+![Start Game Screenshot](https://github.com/toladev0/Tank-Battle-Project/blob/main/Screenshots/StartScreen.png)
 ---
 
 ## 📖 Future Updates
