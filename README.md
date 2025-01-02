@@ -66,9 +66,22 @@ To run the game locally, follow these steps:
 ---
 
 ## 📸 Screenshots
-### Start Game
-![Start Game Screenshot](https://github.com/toladev0/Tank-Battle-Project/blob/main/Screenshots/StartScreen.png)
----
+
+Here are some gameplay screenshots from **Tank Battle 2D**:  
+
+<div align="center">  
+  <table>  
+    <tr>  
+      <td><img src="Screenshots/StartScreen.png" alt="Start Game" width="300"></td>  
+      <td><img src="Screenshots/SelectMaps.png" alt="Select Maps" width="300"></td>  
+      <td><img src="Screenshots/GamePlay.png" alt="Game Play" width="300"></td>  
+    </tr>  
+    <tr>  
+      <td><img src="Screenshots/WinScreen.png" alt="Win Screen" width="300"></td>  
+      <td><img src="Screenshots/TipScreen.png" alt="TipScreen" width="300"></td>  
+    </tr>  
+  </table>  
+</div>  
 
 ## 📖 Future Updates
 Exciting features planned for future versions:
