@@ -66,7 +66,8 @@ To run the game locally, follow these steps:
 ---
 
 ## 📸 Screenshots
-
+### Start Game
+![Start Game Screenshot](https://user-images.githubusercontent.com/your-username/image-id1.png)
 ---
 
 ## 📖 Future Updates
@@ -83,20 +84,5 @@ For feedback or suggestions, feel free to reach out:
 
 - **GitHub**: TolaDev0
 - **Email**: lonwtolagmail.com
-
----
-
-### Notes:
-1. **Replace placeholders**:  
-   - `yourusername` → Replace with your GitHub username.  
-   - `your.email@example.com` → Replace with your email.  
-   - Replace the placeholder screenshot link with actual images or screenshots from your game.  
-
-2. **Add a LICENSE file**:  
-   If you're using the MIT license, create a `LICENSE` file in the repository and paste the [MIT License template](https://opensource.org/licenses/MIT).  
-
-3. **Optional Enhancements**:  
-   - Add animated GIFs to showcase the gameplay in the **Screenshots** section.  
-   - Include a **Credits** section if you used third-party assets (e.g., sprites, sounds).  
 
 Let me know if you need help with these final touches! 😊
