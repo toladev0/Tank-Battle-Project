@@ -99,15 +99,18 @@ public class UIController : MonoBehaviour
 
     private void UpdateScreenIcons()
     {
-        if (Screen.fullScreen)
+        if (FullScreenIcon != null && WindowedIcon != null)
         {
-            FullScreenIcon.SetActive(true);
-            WindowedIcon.SetActive(false);
-        }
-        else
-        {
-            FullScreenIcon.SetActive(false);
-            WindowedIcon.SetActive(true);
+            if (Screen.fullScreen)
+            {
+                FullScreenIcon.SetActive(true);
+                WindowedIcon.SetActive(false);
+            }
+            else
+            {
+                FullScreenIcon.SetActive(false);
+                WindowedIcon.SetActive(true);
+            }
         }
     }
 }
