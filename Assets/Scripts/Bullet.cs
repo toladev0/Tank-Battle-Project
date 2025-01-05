@@ -11,12 +11,6 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        // Log an error if Rigidbody2D is missing
-        if (rb == null)
-        {
-            Debug.LogError("Rigidbody2D component is missing on the Bullet object.");
-        }
     }
 
     private void Start()

@@ -7,20 +7,16 @@ public class FreezeGameController : MonoBehaviour
     public GameObject winPanel;
 
     [Header("Audio")]
-    public GameObject battleAudioObject;
+    public GameObject Theme;
 
-    private AudioSource battleAudioSource;
+    private AudioSource ThemeAs;
 
     private void Start()
     {
         // Safely get the AudioSource component if battleAudioObject is assigned
-        if (battleAudioObject != null)
+        if (Theme != null)
         {
-            battleAudioSource = battleAudioObject.GetComponent<AudioSource>();
-        }
-        else
-        {
-            Debug.LogWarning("BattleAudioObject is not assigned in the Inspector.");
+            ThemeAs = Theme.GetComponent<AudioSource>();
         }
     }
 
@@ -39,21 +35,17 @@ public class FreezeGameController : MonoBehaviour
             // Update time scale and audio playback based on game state
             Time.timeScale = isGamePaused ? 0f : 1f;
 
-            if (battleAudioSource != null)
+            if (ThemeAs != null)
             {
                 if (isGamePaused)
                 {
-                    battleAudioSource.Pause();
+                    ThemeAs.Pause();
                 }
                 else
                 {
-                    battleAudioSource.UnPause();
+                    ThemeAs.UnPause();
                 }
             }
-        }
-        else
-        {
-            Debug.LogError("PausePanel or WinPanel is not assigned in the Inspector.");
         }
     }
 }
