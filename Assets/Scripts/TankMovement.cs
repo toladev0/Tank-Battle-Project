@@ -38,7 +38,12 @@ public class TankMovement : MonoBehaviour
             horizontalMovement = GetInputMovement(KeyCode.LeftArrow, KeyCode.RightArrow);  // Left and Right Movement
             verticalMovement = GetInputMovement(KeyCode.DownArrow, KeyCode.UpArrow);  // Down and Up Movement (Reversed order)
         }
-
+        // Prioritize one axis: if both are pressed, only allow movement in one direction
+        if (horizontalMovement != 0 && verticalMovement != 0)
+        {
+            // Prioritize vertical movement over horizontal
+            horizontalMovement = 0;
+        }
         rb.velocity = new Vector2(horizontalMovement, verticalMovement);
     }
 
@@ -56,7 +61,6 @@ public class TankMovement : MonoBehaviour
         {
             movement = movementSpeed * Time.deltaTime;
         }
-
         return movement;
     }
 

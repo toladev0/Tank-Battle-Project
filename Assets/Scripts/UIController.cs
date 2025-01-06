@@ -23,12 +23,6 @@ public class UIController : MonoBehaviour
     // Loads the selected map
     public void PlayGame()
     {
-        if (selectedMap <= 0)
-        {
-            Debug.LogError("Selected map must be greater than 0.");
-            return;
-        }
-
         SceneManager.LoadScene("Map " + selectedMap);
     }
 
@@ -42,7 +36,6 @@ public class UIController : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
-        Debug.Log("Game exited."); // Optional for debugging purposes.
     }
 
     // Navigates to the Start Menu
