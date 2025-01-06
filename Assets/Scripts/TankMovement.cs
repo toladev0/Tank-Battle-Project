@@ -6,11 +6,14 @@ public class TankMovement : MonoBehaviour
     public GameObject bulletPrefab;
 
     private Rigidbody2D rb;
+    private Animator animator;
     private string tankTag;
+    private bool isPlayer1Move  = false, isPlayer2Move = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         tankTag = gameObject.tag; // Get the tag of the GameObject (Player1 or Player2)
     }
 
@@ -31,18 +34,36 @@ public class TankMovement : MonoBehaviour
         {
             horizontalMovement = GetInputMovement(KeyCode.A, KeyCode.D);  // Left and Right Movement
             verticalMovement = GetInputMovement(KeyCode.S, KeyCode.W);  // Down and Up Movement (Reversed order)
+            isPlayer1Move = true;
         }
         // Movement logic for Player2 (Arrow Keys)
         else if (tankTag == "Player2")
         {
             horizontalMovement = GetInputMovement(KeyCode.LeftArrow, KeyCode.RightArrow);  // Left and Right Movement
             verticalMovement = GetInputMovement(KeyCode.DownArrow, KeyCode.UpArrow);  // Down and Up Movement (Reversed order)
+            isPlayer2Move = true;
         }
         // Prioritize one axis: if both are pressed, only allow movement in one direction
         if (horizontalMovement != 0 && verticalMovement != 0)
         {
             // Prioritize vertical movement over horizontal
             horizontalMovement = 0;
+        }
+        if ((horizontalMovement != 0 || verticalMovement != 0) && isPlayer1Move)
+        {
+            animator.Play("Player1-Move");
+        }
+        else 
+        {
+            animator.Play("Player1-Idle");
+        }
+        if ((horizontalMovement != 0 || verticalMovement != 0) && isPlayer2Move)
+        {
+            animator.Play("Player2-Move");
+        }
+        else
+        {
+            animator.Play("Player2-Idle");
         }
         rb.velocity = new Vector2(horizontalMovement, verticalMovement);
     }

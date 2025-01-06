@@ -6,7 +6,6 @@ public class PlayerAnimation : MonoBehaviour
     private PlayerInterface pi;
     private GameObject player1;
     private GameObject player2;
-    bool isPlayerMove;
 
     private void Awake()
     {
