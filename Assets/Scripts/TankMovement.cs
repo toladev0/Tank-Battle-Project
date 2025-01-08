@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class TankMovement : MonoBehaviour
 {
-    public float movementSpeed;
+    public float movementSpeed = 5f;
     public GameObject bulletPrefab;
 
     private Rigidbody2D rb;
     private Animator animator;
     private string tankTag;
-    private bool isPlayer1Move  = false, isPlayer2Move = false;
 
     private void Awake()
     {
@@ -29,65 +28,58 @@ public class TankMovement : MonoBehaviour
         float horizontalMovement = 0;
         float verticalMovement = 0;
 
-        // Movement logic for Player1 (WASD)
+        // Get movement input based on tank tag
         if (tankTag == "Player1")
         {
-            horizontalMovement = GetInputMovement(KeyCode.A, KeyCode.D);  // Left and Right Movement
-            verticalMovement = GetInputMovement(KeyCode.S, KeyCode.W);  // Down and Up Movement (Reversed order)
-            isPlayer1Move = true;
+            horizontalMovement = GetInputMovement(KeyCode.A, KeyCode.D);
+            verticalMovement = GetInputMovement(KeyCode.S, KeyCode.W);
         }
-        // Movement logic for Player2 (Arrow Keys)
         else if (tankTag == "Player2")
         {
-            horizontalMovement = GetInputMovement(KeyCode.LeftArrow, KeyCode.RightArrow);  // Left and Right Movement
-            verticalMovement = GetInputMovement(KeyCode.DownArrow, KeyCode.UpArrow);  // Down and Up Movement (Reversed order)
-            isPlayer2Move = true;
+            horizontalMovement = GetInputMovement(KeyCode.LeftArrow, KeyCode.RightArrow);
+            verticalMovement = GetInputMovement(KeyCode.DownArrow, KeyCode.UpArrow);
         }
-        // Prioritize one axis: if both are pressed, only allow movement in one direction
+
+        // Prioritize one axis (vertical over horizontal)
         if (horizontalMovement != 0 && verticalMovement != 0)
         {
-            // Prioritize vertical movement over horizontal
             horizontalMovement = 0;
         }
-        if ((horizontalMovement != 0 || verticalMovement != 0) && isPlayer1Move)
+
+        // Set movement velocity
+        rb.velocity = new Vector2(horizontalMovement, verticalMovement) * movementSpeed;
+
+        // Update animation states
+        if (horizontalMovement != 0 || verticalMovement != 0)
         {
-            animator.Play("Player1-Move");
-        }
-        else 
-        {
-            animator.Play("Player1-Idle");
-        }
-        if ((horizontalMovement != 0 || verticalMovement != 0) && isPlayer2Move)
-        {
-            animator.Play("Player2-Move");
+            animator.Play(tankTag + "-Move");
         }
         else
         {
-            animator.Play("Player2-Idle");
+            animator.Play(tankTag + "-Idle");
         }
-        rb.velocity = new Vector2(horizontalMovement, verticalMovement);
     }
 
     private float GetInputMovement(KeyCode negativeKey, KeyCode positiveKey)
     {
         float movement = 0;
 
-        // Negative movement (Left/Down key)
+        // Negative movement (e.g., Left/Down key)
         if (Input.GetKey(negativeKey))
         {
-            movement = -movementSpeed * Time.deltaTime;
+            movement = -1f;
         }
-        // Positive movement (Right/Up key)
-        if (Input.GetKey(positiveKey))
+        // Positive movement (e.g., Right/Up key)
+        else if (Input.GetKey(positiveKey))
         {
-            movement = movementSpeed * Time.deltaTime;
+            movement = 1f;
         }
-        return movement;
+
+        return movement * Time.deltaTime; // Incorporate Time.deltaTime
     }
 
     private void HandleRotation()
     {
-        // Rotation based on movement input
         if (tankTag == "Player1")
         {
             UpdateRotation(KeyCode.A, KeyCode.D, KeyCode.W, KeyCode.S);
@@ -108,9 +100,9 @@ public class TankMovement : MonoBehaviour
 
     private void HandleShooting()
     {
-        // Shooting bullets (for Player1 or Player2)
+        // Check for shooting input
         if ((tankTag == "Player1" && Input.GetKeyDown(KeyCode.Space)) ||
-            (tankTag == "Player2" && (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Slash))))
+            (tankTag == "Player2" && Input.GetKeyDown(KeyCode.RightShift)))
         {
             Vector3 bulletSpawnPosition = transform.position + transform.up; // Offset bullet in the forward direction
             Instantiate(bulletPrefab, bulletSpawnPosition, transform.rotation);
