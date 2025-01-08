@@ -102,7 +102,7 @@ public class TankMovement : MonoBehaviour
     {
         // Check for shooting input
         if ((tankTag == "Player1" && Input.GetKeyDown(KeyCode.Space)) ||
-            (tankTag == "Player2" && Input.GetKeyDown(KeyCode.RightShift)))
+            (tankTag == "Player2" && (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Slash))))
         {
             Vector3 bulletSpawnPosition = transform.position + transform.up; // Offset bullet in the forward direction
             Instantiate(bulletPrefab, bulletSpawnPosition, transform.rotation);
