@@ -10,19 +10,31 @@ public class PlayerAnimation : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        pi = GetComponent<PlayerInterface>();   
+        pi = GetComponent<PlayerInterface>();
+
         player1 = GameObject.FindWithTag("Player1");
         player2 = GameObject.FindWithTag("Player2");
+
+        if (animator == null)
+        {
+            Debug.LogError("Animator component is missing on " + gameObject.name);
+        }
+
+        if (pi == null)
+        {
+            Debug.LogError("PlayerInterface component is missing on " + gameObject.name);
+        }
     }
 
     private void Update()
     {
-        if (player1 != null)
+        // Handle inputs separately for each player
+        if (player1 != null && gameObject.CompareTag("Player1"))
         {
             HandlePlayer1Input();
         }
 
-        if (player2 != null)
+        if (player2 != null && gameObject.CompareTag("Player2"))
         {
             HandlePlayer2Input();
         }
@@ -32,12 +44,12 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            animator.Play("Player1-Shoot");
-            pi.__Shoot__();
+            PlayAnimation("Player1-Shoot");
+            pi?.__Shoot__();
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
-            animator.Play("Player1-Idle");
+            PlayAnimation("Player1-Idle");
         }
     }
 
@@ -45,12 +57,24 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Slash))
         {
-            animator.Play("Player2-Shoot");
-            pi.__Shoot__();
+            PlayAnimation("Player2-Shoot");
+            pi?.__Shoot__();
         }
         else if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.Slash))
         {
-            animator.Play("Player2-Idle");
+            PlayAnimation("Player2-Idle");
+        }
+    }
+
+    private void PlayAnimation(string animationName)
+    {
+        if (animator != null)
+        {
+            animator.Play(animationName);
+        }
+        else
+        {
+            Debug.LogWarning("Animator is not assigned.");
         }
     }
 }
