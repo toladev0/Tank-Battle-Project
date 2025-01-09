@@ -2007,6 +2007,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map 1
       objectReference: {fileID: 0}
+    - target: {fileID: 916755960287677156, guid: 3782a03550b977b40aa707a9df77811b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552999590278608298, guid: 3782a03550b977b40aa707a9df77811b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565130336158220659, guid: 3782a03550b977b40aa707a9df77811b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386404710152629858, guid: 3782a03550b977b40aa707a9df77811b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223464760152561460, guid: 3782a03550b977b40aa707a9df77811b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694040542430833681, guid: 3782a03550b977b40aa707a9df77811b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7062080511934663176, guid: 3782a03550b977b40aa707a9df77811b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.4737878
@@ -2046,6 +2070,14 @@ PrefabInstance:
     - target: {fileID: 7062080511934663176, guid: 3782a03550b977b40aa707a9df77811b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403179626671706064, guid: 3782a03550b977b40aa707a9df77811b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093335510397062189, guid: 3782a03550b977b40aa707a9df77811b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
