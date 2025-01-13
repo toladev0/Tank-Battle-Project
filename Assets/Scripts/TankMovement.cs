@@ -4,21 +4,25 @@ public class TankMovement : MonoBehaviour
 {
     public float movementSpeed = 5f;
     public GameObject bulletPrefab;
+    public float reload = 1f;
+    public bool IsShoot = false;
 
     private Rigidbody2D rb;
     private Animator animator;
     private string tankTag;
+    private float lastShotTime;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         tankTag = gameObject.tag; // Get the tag of the GameObject (Player1 or Player2)
+        lastShotTime = -reload;
     }
 
     private void Update()
     {
-        HandleMovement();
+        HandleMovement(); 
         HandleRotation();
         HandleShooting();
     }
@@ -101,11 +105,17 @@ public class TankMovement : MonoBehaviour
     private void HandleShooting()
     {
         // Check for shooting input
-        if ((tankTag == "Player1" && Input.GetKeyDown(KeyCode.Space)) ||
-            (tankTag == "Player2" && (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Slash))))
+        if (Time.time - lastShotTime >= reload && ((tankTag == "Player1" && Input.GetKeyDown(KeyCode.Space)) ||
+            (tankTag == "Player2" && (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Slash)))))
         {
             Vector3 bulletSpawnPosition = transform.position + transform.up; // Offset bullet in the forward direction
             Instantiate(bulletPrefab, bulletSpawnPosition, transform.rotation);
+            lastShotTime = Time.time;
+            IsShoot = true;
+        }
+        else
+        {
+            IsShoot = false;
         }
     }
 }

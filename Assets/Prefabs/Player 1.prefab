@@ -327,6 +327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 150
   bulletPrefab: {fileID: 5957505451227180401, guid: 04adb5b4171bb28459fe4790309da00f, type: 3}
+  reload: 0.4
+  IsShoot: 0
 --- !u!114 &5886012736299675815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2139da62359204ca38078e004b92bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoot: {fileID: 8300000, guid: a23fab894c9aab44bab6fbba52f853cc, type: 3}
+  shoot: {fileID: 8300000, guid: b022e0ffbf509094d876ade0735a34cc, type: 3}
   playerMove: {fileID: 8300000, guid: a5250ca3150059745b62a1e317f31df8, type: 3}
   shootAs: {fileID: 3352073941639244399}
   playerMoveAs: {fileID: 3448811779927971518}
