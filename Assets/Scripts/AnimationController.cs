@@ -6,11 +6,13 @@ public class PlayerAnimation : MonoBehaviour
     private PlayerInterface pi;
     private GameObject player1;
     private GameObject player2;
+    TankMovement tankMovement;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         pi = GetComponent<PlayerInterface>();
+        tankMovement = GetComponent<TankMovement>();
 
         player1 = GameObject.FindWithTag("Player1");
         player2 = GameObject.FindWithTag("Player2");
@@ -42,12 +44,12 @@ public class PlayerAnimation : MonoBehaviour
 
     private void HandlePlayer1Input()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (tankMovement.IsShoot)
         {
             PlayAnimation("Player1-Shoot");
             pi?.__Shoot__();
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else if (tankMovement.IsShoot)
         {
             PlayAnimation("Player1-Idle");
         }
@@ -55,12 +57,12 @@ public class PlayerAnimation : MonoBehaviour
 
     private void HandlePlayer2Input()
     {
-        if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Slash))
+        if (tankMovement.IsShoot)
         {
             PlayAnimation("Player2-Shoot");
             pi?.__Shoot__();
         }
-        else if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.Slash))
+        else if (tankMovement.IsShoot)
         {
             PlayAnimation("Player2-Idle");
         }
